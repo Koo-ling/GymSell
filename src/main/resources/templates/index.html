@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
+<html
+     xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>体育场馆在线售票管理信息系统</title>
+    <link href="../static/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="../static/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="../static/css/footer.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h3 th:text="${index.title}"></h3>
-    <a th:href="@{/users/register}">注册</a>
-    <div></div>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+
 </body>
 </html>

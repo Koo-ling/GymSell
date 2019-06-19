@@ -5,14 +5,13 @@ import com.ecut.gymonlineshopping.dto.TicketDTO;
 import com.ecut.gymonlineshopping.enums.ExceptionEnum;
 import com.ecut.gymonlineshopping.enums.GameStatusEnum;
 import com.ecut.gymonlineshopping.exception.GymException;
-import com.ecut.gymonlineshopping.pojo.GameTicket;
+import com.ecut.gymonlineshopping.domain.GameTicket;
 import com.ecut.gymonlineshopping.repository.GameTicketRepository;
 import com.ecut.gymonlineshopping.service.GameTicketService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.security.krb5.internal.Ticket;
 
 import java.util.List;
 

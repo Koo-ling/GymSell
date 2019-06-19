@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<header id="top" data-th-fragment="header">
+    <div id="logo" class="lf">
+        <img class="animated jello" src="../../static/img/header/logo.png" alt="logo"/>
+    </div>
+    <div class="rt">
+        <ul class="lf">
+            <li>
+                <b th:if="${session.name} eq 'admin'">
+                    <a th:text="'当前用户: ' + ${session.name}" th:href="@{/users/index/admin}"></a>
+                    <b>|</b>
+                </b>
+            </li>
+            <li>
+                <b th:if="${session.name} ne 'admin'">
+                    <a th:text="'当前用户: ' + ${session.name}" th:href="@{/users/index/member}"></a>
+                    <b>|</b>
+                </b>
+            </li>
+            <li><a th:href="@{/}">首页</a><b>|</b></li>
+            <li><a th:href="@{/game/}">比赛</a><b>|</b></li>
+            <li><a th:href="@{/tickets/}">门票</a><b>|</b></li>
+            <li><a th:href="@{/message/listMessage}">查看留言</a><b>|</b></li>
+            <li><a th:href="@{/message/messageForm}">新建留言</a><b>|</b></li>
+            <li><a th:href="@{/order/list}">订单</a><b>|</b></li>
+            <li><a th:href="@{/users/loginForm}">退出</a><b>|</b></li>
+        </ul>
+    </div>
+</header>
+</body>
+</html>

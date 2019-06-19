@@ -1,6 +1,6 @@
 package com.ecut.gymonlineshopping.controller;
 
-import com.ecut.gymonlineshopping.pojo.User;
+import com.ecut.gymonlineshopping.domain.User;
 import com.ecut.gymonlineshopping.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

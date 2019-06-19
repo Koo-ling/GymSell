@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service.impl;
 
 import com.ecut.gymonlineshopping.dto.GameDTO;
-import com.ecut.gymonlineshopping.pojo.GameInfo;
+import com.ecut.gymonlineshopping.domain.GameInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author: Selune

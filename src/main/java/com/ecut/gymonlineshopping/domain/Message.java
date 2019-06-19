@@ -1,4 +1,4 @@
-package com.ecut.gymonlineshopping.pojo;
+package com.ecut.gymonlineshopping.domain;
 
 import lombok.Data;
 

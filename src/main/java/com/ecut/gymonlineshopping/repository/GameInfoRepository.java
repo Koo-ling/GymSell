@@ -1,7 +1,6 @@
 package com.ecut.gymonlineshopping.repository;
 
-import com.ecut.gymonlineshopping.pojo.GameInfo;
-import com.ecut.gymonlineshopping.pojo.GymInfo;
+import com.ecut.gymonlineshopping.domain.GameInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,4 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface GameInfoRepository extends JpaRepository<GameInfo, Integer> {
+
+    /**
+     * 根据gameId查询比赛
+     * @param gameId
+     * @return
+     * @throws Exception
+     */
+    GameInfo findByGameId(Integer gameId) throws Exception;
 }

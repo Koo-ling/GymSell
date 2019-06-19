@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service.impl;
 
 import com.ecut.gymonlineshopping.dto.TicketDTO;
-import com.ecut.gymonlineshopping.pojo.GameTicket;
+import com.ecut.gymonlineshopping.domain.GameTicket;
 import com.ecut.gymonlineshopping.repository.GameTicketRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,11 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author: Selune

@@ -2,7 +2,7 @@ package com.ecut.gymonlineshopping.service;
 
 import com.ecut.gymonlineshopping.dto.CartDTO;
 import com.ecut.gymonlineshopping.dto.TicketDTO;
-import com.ecut.gymonlineshopping.pojo.GameTicket;
+import com.ecut.gymonlineshopping.domain.GameTicket;
 
 import java.util.List;
 

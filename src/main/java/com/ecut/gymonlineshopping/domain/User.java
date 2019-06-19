@@ -1,4 +1,4 @@
-package com.ecut.gymonlineshopping.pojo;
+package com.ecut.gymonlineshopping.domain;
 
 import com.ecut.gymonlineshopping.enums.RoleEnum;
 import lombok.Data;
@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @Author: Selune

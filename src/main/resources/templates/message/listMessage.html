@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <link th:href="@{~/static/css/header.css}" href="../../static/css/header.css" rel="stylesheet"/>
+    <link th:href="@{~/static/css/footer.css}" href="../../static/css/footer.css" rel="stylesheet"/>
+    <style>
+        span {
+            font-size: small;
+            float: right;
+            margin-right: 20px;
+        }
+
+        .div {
+            border: 1px solid;
+            margin-left: 40px;
+        }
+
+        p {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="font-size: medium; width: 600px; margin: 60px auto 0; font-family: 微软雅黑">
+    <h1 style="margin-left: 5%" th:text="${messageList.pageTitle}"></h1><br>
+    <div th:object="${messageList.messages}" th:border="1">
+        <div>
+            <ul th:if="${messageList.messages.size()} eq 0">
+                <li>没有留言</li>
+            </ul>
+            <ul th:each="messagelist : ${messageList.messages}">
+                <li>
+                    <h3 th:text="${messagelist.author} + '：'"></h3><br>
+                    <div style="width: 440px">
+                        <p th:text="${messagelist.context}"></p><br>
+                    </div>
+                    <span th:text="${messagelist.createTime}"></span><br>
+                    <div class="div">
+                        <ul th:each="message : ${messagelist.text}">
+                            <li>
+                                <div style="border: 1px dashed">
+                                    <div style="width: 440px;">
+                                        <p th:text="${message.text}"></p>
+                                    </div>
+                                    <br>
+                                    <span th:text="${message.createTime}"></span><br>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

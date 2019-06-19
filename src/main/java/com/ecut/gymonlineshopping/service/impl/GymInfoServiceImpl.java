@@ -1,6 +1,6 @@
 package com.ecut.gymonlineshopping.service.impl;
 
-import com.ecut.gymonlineshopping.pojo.GymInfo;
+import com.ecut.gymonlineshopping.domain.GymInfo;
 import com.ecut.gymonlineshopping.repository.GymInfoRepository;
 import com.ecut.gymonlineshopping.service.GymInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

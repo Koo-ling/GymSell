@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service.impl;
 
 import com.ecut.gymonlineshopping.dto.GameDTO;
-import com.ecut.gymonlineshopping.pojo.GameInfo;
+import com.ecut.gymonlineshopping.domain.GameInfo;
 import com.ecut.gymonlineshopping.repository.GameInfoRepository;
 import com.ecut.gymonlineshopping.service.GameInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * @Author: Selune
  * @Date: 2019/6/16 16:52
@@ -22,11 +24,17 @@ public interface MessageService {
     MessageDTO addMessage(MessageDTO messageDTO) throws Exception;
 
     /**
-     * 查看留言
-     * @param title
-     * @param pageable
+     * 根据作者查询
+     * @param author
      * @return
      * @throws Exception
      */
-    Page<MessageDTO> findAll(String title, Pageable pageable) throws Exception;
+    List<MessageDTO> findAllByAuthor(String author) throws Exception;
+
+    /**
+     * 查询所有留言
+     * @return
+     * @throws Exception
+     */
+    List<MessageDTO> findAll() throws Exception;
 }

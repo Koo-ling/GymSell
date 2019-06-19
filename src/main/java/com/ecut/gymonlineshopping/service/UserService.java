@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service;
 
 import com.ecut.gymonlineshopping.dto.UserDTO;
-import com.ecut.gymonlineshopping.pojo.User;
+import com.ecut.gymonlineshopping.domain.User;
 
 /**
  * @Author: Selune

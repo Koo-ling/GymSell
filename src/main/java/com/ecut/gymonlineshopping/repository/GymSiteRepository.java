@@ -1,6 +1,6 @@
 package com.ecut.gymonlineshopping.repository;
 
-import com.ecut.gymonlineshopping.pojo.GymSite;
+import com.ecut.gymonlineshopping.domain.GymSite;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

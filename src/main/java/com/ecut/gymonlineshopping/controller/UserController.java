@@ -1,23 +1,22 @@
 package com.ecut.gymonlineshopping.controller;
 
-import com.ecut.gymonlineshopping.enums.ExceptionEnum;
-import com.ecut.gymonlineshopping.exception.GymException;
+import com.ecut.gymonlineshopping.config.WebSecurityConfig;
+import com.ecut.gymonlineshopping.dto.LoginDTO;
 import com.ecut.gymonlineshopping.form.LoginForm;
 import com.ecut.gymonlineshopping.form.RegisterForm;
-import com.ecut.gymonlineshopping.pojo.User;
+import com.ecut.gymonlineshopping.domain.User;
 import com.ecut.gymonlineshopping.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
-import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @Author: Selune
@@ -31,48 +30,64 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @GetMapping("/register")
+    @GetMapping(value = "/registerForm")
     public ModelAndView registerForm(Model model) throws Exception {
-        model.addAttribute("user", new User());
-        model.addAttribute("title", "创建用户");
-        return new ModelAndView("users/register", "userModel", model);
+        model.addAttribute("user", new RegisterForm());
+        return new ModelAndView("users/register", "register", model);
     }
 
-    @PostMapping
-    public ModelAndView register(@Valid RegisterForm userForm,
-                                 BindingResult bindingResult) throws Exception {
-        if (bindingResult.hasErrors()) {
-            throw new GymException(ExceptionEnum.PARAM_ERROR.getCode(),
-                    Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
-        }
-        if (service.findByName(userForm.getName())) {
-            throw new GymException(ExceptionEnum.MEMBER_EXIST);
+    @PostMapping(value = "/register")
+    public ModelAndView register(RegisterForm registerForm) throws Exception {
+        if (service.findByName(registerForm.getName())) {
+            throw new Exception("用户已存在");
         }
         User user = new User();
-        BeanUtils.copyProperties(userForm, user);
+        BeanUtils.copyProperties(registerForm, user);
         service.registerUser(user);
-        return new ModelAndView("redirect:/users/login");
+        return new ModelAndView("redirect:/users/loginForm");
     }
 
-    @PostMapping("/login")
-    public ModelAndView login(@Valid LoginForm loginForm,
-                              BindingResult bindingResult) throws Exception {
+    @GetMapping(value = "/loginForm")
+    public ModelAndView loginForm(Model model) throws Exception {
+        model.addAttribute("account", new LoginDTO());
+        return new ModelAndView("users/login", "login", model);
+    }
+
+    @PostMapping(value = "/login")
+    public ModelAndView login(LoginForm loginForm,
+                              Model model,
+                              HttpServletRequest request) throws Exception {
         User result = service.findByNameAndPassword(loginForm.getName(), loginForm.getPassword());
 
-        if (bindingResult.hasErrors()) {
-            throw new GymException(ExceptionEnum.PARAM_ERROR.getCode(),
-                    Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
-        }
         if (null == result) {
-            throw new GymException(ExceptionEnum.MEMBER_NOT_EXIST);
+            throw new Exception("用户不存在");
         }
-        if (result.getRole() == 0) {
-            return new ModelAndView("redirect:/index/member");
-        } else if (result.getRole() == 1) {
-            return new ModelAndView("redirect:/index/admin");
+        request.getSession().setAttribute("name", result.getName());
+
+        if (result.getRole() == 1) {
+            model.addAttribute("username", result.getName());
+            return new ModelAndView("redirect:index/admin", "admin", model);
         }
-        return new ModelAndView("redirect:/login");
+        model.addAttribute("username", result.getName());
+        return new ModelAndView("redirect:index/member", "member", model);
     }
 
+    @GetMapping("/index/admin")
+    public ModelAndView admin(Model model) {
+        model.addAttribute("title", "管理员界面");
+        return new ModelAndView("index/admin/admin");
+    }
 
+    @GetMapping("/index/member")
+    public ModelAndView member(Model model, HttpServletRequest request) {
+        model.addAttribute("title", "会员界面");
+        model.addAttribute("username", request.getSession().getAttribute("name"));
+        return new ModelAndView("index/member/member", "member", model);
+    }
+
+    @GetMapping("/loginout")
+    public ModelAndView loginout(HttpServletRequest request) throws Exception {
+        request.getSession().invalidate();
+        return new ModelAndView("users/loginForm");
+    }
 }

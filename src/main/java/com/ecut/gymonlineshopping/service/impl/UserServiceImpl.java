@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service.impl;
 
 import com.ecut.gymonlineshopping.dto.UserDTO;
-import com.ecut.gymonlineshopping.pojo.User;
+import com.ecut.gymonlineshopping.domain.User;
 import com.ecut.gymonlineshopping.repository.UserRepository;
 import com.ecut.gymonlineshopping.service.UserService;
 import org.springframework.beans.BeanUtils;

@@ -3,19 +3,67 @@
     xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>注册</title>
+    <title>体育馆在线售票信息系统注册页面</title>
+    <link href="../../static/css/header.css" rel="stylesheet"/>
+    <link href="../../static/css/footer.css" rel="stylesheet"/>
+    <link href="../../static/css/animate.css" rel="stylesheet"/>
+    <link href="../../static/css/login.css" rel="stylesheet" />
 </head>
 <body>
-<div>
-    <form th:action="@{/users/login}" method="post" th:object="${userModel}">
-        <label>用户名: <input type="text" name="name" th:value="*{name}"></label><br>
-        <label>密码: <input type="password" name="password" th:value="*{password}"></label><br>
-        <label>性别: <input type="text" name="sex" th:value="*{sex}"></label><br>
-        <label>地址: <input type="text" name="address" th:value="*{address}"></label><br>
-        <label>手机号: <input type="tel" name="phone" th:value="*{phone}"></label><br>
-        <label>邮箱: <input type="email" name="email" th:value="*{email}"></label><br>
-        <input type="submit" value="注册">
-    </form>
+<div class="modal">
+    <div class="modal_header">
+        提示信息
+    </div>
+    <div class="modal_content">
+        恭喜您已成功注册体育馆在线售票信息系统！
+    </div>
 </div>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<div class="parent">
+    <div class="container">
+        <div class="panel rt">
+            <form id="fm-register" method="post" action="/users/register"
+                  th:object="${register.user}">
+                <div class="txt">
+                    <p>新用户注册
+                        <span>
+              <a href="/users/loginForm">直接登录</a>
+            </span>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="username">用户名：</label>
+                    <input type="text" name="name" th:value="*{name}" id="username"/>
+                </div>
+                <div class="form-group">
+                    <label for="password">登录密码：</label>
+                    <input type="password" name="password" th:value="*{password}" id="password" />
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱：</label>
+                    <input type="email"  name="email" id="email" th:value="*{email}"/>
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机号：</label>
+                    <input id="phone" name="phone" th:value="*{phone}" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="address">地址：</label>
+                    <input id="address" name="address" th:value="*{address}" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="sex">性别：</label>
+                    <input id="sex" name="sex" th:value="*{sex}" type="text" />
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <input type="submit" value="提交注册信息" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,9 +1,11 @@
 package com.ecut.gymonlineshopping.dto;
 
-import com.ecut.gymonlineshopping.pojo.Message;
+import com.ecut.gymonlineshopping.domain.Message;
+import com.ecut.gymonlineshopping.utils.KeyUtil;
 import com.ecut.gymonlineshopping.utils.serializer.Date2LongSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
 import java.util.List;
@@ -16,16 +18,18 @@ import java.util.List;
 @Data
 public class MessageDTO {
 
-    private Integer id;
+    public Integer id;
 
-    private Integer messageId;
+    public Integer messageId;
 
-    private String title;
+    public String title;
 
-    private String author;
+    public String author;
 
-    private List<Message> text;
+    public String context;
+
+    public List<Message> text;
 
     @JsonSerialize(using = Date2LongSerializer.class)
-    private Date createTime;
+    public Date createTime;
 }

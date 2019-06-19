@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.service;
 
 import com.ecut.gymonlineshopping.dto.GameDTO;
-import com.ecut.gymonlineshopping.pojo.GameInfo;
+import com.ecut.gymonlineshopping.domain.GameInfo;
 
 import java.util.List;
 

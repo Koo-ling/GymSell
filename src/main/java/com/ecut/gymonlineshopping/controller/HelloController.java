@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -20,7 +21,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public ModelAndView index(Model model) {
         model.addAttribute("title", "体育馆比赛售票系统");
         return new ModelAndView("index", "index", model);

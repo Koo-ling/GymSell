@@ -1,6 +1,6 @@
 package com.ecut.gymonlineshopping.repository;
 
-import com.ecut.gymonlineshopping.pojo.GameTicket;
+import com.ecut.gymonlineshopping.domain.GameTicket;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

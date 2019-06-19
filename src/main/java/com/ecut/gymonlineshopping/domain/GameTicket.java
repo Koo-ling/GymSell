@@ -1,4 +1,4 @@
-package com.ecut.gymonlineshopping.pojo;
+package com.ecut.gymonlineshopping.domain;
 
 import com.ecut.gymonlineshopping.enums.GameStatusEnum;
 import lombok.Data;

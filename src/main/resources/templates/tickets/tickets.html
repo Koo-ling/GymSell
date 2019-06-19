@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>比赛门票</title>
+    <link href="../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+    <style>
+        table {
+            table-layout: fixed; /* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+        }
+
+        td {
+            width: 100%;
+            word-break: keep-all; /* 不换行 */
+            white-space: nowrap; /* 不换行 */
+            overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+            text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        }
+    </style>
+</head>
+<body>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="font-size: medium; width: 800px; margin: 60px auto 0">
+    <table th:border="1">
+        <thead>
+        <tr>
+            <td>比赛场次</td>
+            <td>比赛名称</td>
+            <td>比赛时间</td>
+            <td>比赛场地</td>
+            <td>比赛类型</td>
+            <td>购买</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${ticketList.tickets.size()} eq 0">
+            <td>今天没有比赛</td>
+        </tr>
+        <tr th:each="ticket : ${ticketList.tickets}">
+            <td th:text="${ticket.gameId}"></td>
+            <td th:text="${ticket.gameName}"></td>
+            <td th:text="${ticket.createTime} + ' - ' + ${ticket.closeTime}"></td>
+            <td th:text="${ticket.location}"></td>
+            <td th:text="${ticket.type}"></td>
+            <td><a th:href="@{/tickets/buy/} + ${ticket.gameId}"
+                   th:text="${ticketList.buy}"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

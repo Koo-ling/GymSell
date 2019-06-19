@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
     <meta charset="UTF-8">
-    <title>登陆</title>
+    <title>体育馆在线售票系统登陆页面</title>
+    <link th:href="@{~/static/css/header.css}" href="../../static/css/header.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/footer.css}" href="../../static/css/footer.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/animate.css}" href="../../static/css/animate.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/login.css}" href="../../static/css/login.css" rel="stylesheet" />
 </head>
 <body>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<div id="container">
+    <div id="cover" class="rt">
+        <form name="form1" th:action="@{/users/login}" method="post" th:object="${login.account}">
+            <div class="txt">
+                <p>登录售票系统
+                    <span>
+                        <a href="/users/registerForm">新用户注册</a>
+                    </span>
+                </p>
+                <div class="text">
+                    <input type="text" placeholder="请输入您的用户名" name="name" th:value="*{name}"
+                           required>
+                    <span></span>
+                </div>
 
+                <div class="text">
+                    <input type="password" placeholder="请输入您的密码" name="password"
+                           th:value="*{password}" >
+                    <span></span>
+                </div>
+                <div class="chose">
+					
+                </div>
+                <input class="button_login" type="submit" value="登录"/>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

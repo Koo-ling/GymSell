@@ -1,6 +1,6 @@
 package com.ecut.gymonlineshopping.service;
 
-import com.ecut.gymonlineshopping.pojo.GymSite;
+import com.ecut.gymonlineshopping.domain.GymSite;
 
 import java.util.List;
 

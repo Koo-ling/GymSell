@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>发布留言</title>
+    <link th:href="@{~/static/css/header.css}" href="../../static/css/header.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/footer.css}" href="../../static/css/footer.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/animate.css}" href="../../static/css/animate.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/login.css}" href="../../static/css/login.css" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="~{/fragment/header :: header}">
+    <span sec:authentication="name"></span>
+    <span sec:authentication="principal.authorities"></span>
+</div>
+<div>
+    <form action="/message/addMessage" method="post" th:object="${messageForm.message}">
+        <input type="hidden" name="author" th:value="${session.name hu }">
+        <label>
+            标题: <input type="text" name="title" th:value="*{title}">
+        </label><br>
+        <label>
+            内容: <textarea name="context" th:value="*{context}"></textarea>
+        </label><br>
+        <label>
+            <input type="submit" value="留言">
+        </label>
+    </form>
+</div>
+</body>
+</html>

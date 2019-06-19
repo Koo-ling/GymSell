@@ -1,6 +1,7 @@
-package com.ecut.gymonlineshopping.pojo;
+package com.ecut.gymonlineshopping.domain;
 
 import lombok.Data;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,6 +28,9 @@ public class MessageBoard {
 
     @Column(name = "author")
     private String author;
+
+    @Column(name = "context")
+    private String context;
 
     @Column(name = "create_time")
     private Date createTime;

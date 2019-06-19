@@ -8,8 +8,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
   thymeleaf:
     encoding: UTF-8
     mode: HTML
     cache: false
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp
+      suffix: .jsp
+    static-path-pattern: /static/**

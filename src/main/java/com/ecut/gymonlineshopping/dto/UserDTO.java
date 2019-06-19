@@ -1,6 +1,5 @@
 package com.ecut.gymonlineshopping.dto;
 
-import com.ecut.gymonlineshopping.pojo.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -18,6 +17,8 @@ public class UserDTO {
     private String password;
 
     private String address;
+
+    private String sex;
 
     private String phone;
 
