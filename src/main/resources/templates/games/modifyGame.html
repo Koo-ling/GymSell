@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改比赛结果</title>
+    <link href="../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+    <style>
+        input {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="width: auto; margin: 60px 330px 0; font-size: 20px" >
+    <form action="/games/modifyGame" method="post" th:object="${modify.game}">
+        <input type="hidden" name="id" th:value="*{id}">
+        比赛名称: <b th:text="*{gameName}"></b><br><br>
+        比赛类型: <b th:text="*{gameType}"></b><br><br>
+        比赛时间: <b th:text="*{gameTime}"></b><br><br>
+        比赛场地: <b th:text="*{gameLocation}"></b><br><br>
+        结果: <label>
+        <input type="text" name="gameResult" th:value="*{gameResult}">
+    </label>
+        <input type="submit" value="更新">
+    </form>
+</div>
+</body>
+</html>

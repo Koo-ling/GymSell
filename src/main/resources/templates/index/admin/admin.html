@@ -11,8 +11,9 @@
 <body>
 <!-- 页面顶部-->
 <div th:replace="~{/fragment/header :: header}"></div>
-<a th:href="@{/users/listUser}" th:text="'用户管理'"></a><br>
-<button th:href="@{/}" th:text="'添加比赛'"></button><br>
-<button th:href="@{/}" th:text="'添加比赛'"></button><br>
+<div style="width: auto; margin-top: 150px; margin-left: 300px">
+    <a th:href="@{/users/listUser}" th:text="'用户管理'" style="font-size: 40px"></a><br>
+    <a th:href="@{/games/addGame}" th:text="'添加比赛'" style="font-size: 40px"></a><br>
+</div>
 </body>
 </html>

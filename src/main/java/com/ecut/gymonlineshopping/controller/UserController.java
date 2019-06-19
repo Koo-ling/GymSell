@@ -1,7 +1,7 @@
 package com.ecut.gymonlineshopping.controller;
 
-import com.ecut.gymonlineshopping.config.WebSecurityConfig;
 import com.ecut.gymonlineshopping.dto.LoginDTO;
+import com.ecut.gymonlineshopping.dto.UserDTO;
 import com.ecut.gymonlineshopping.form.LoginForm;
 import com.ecut.gymonlineshopping.form.RegisterForm;
 import com.ecut.gymonlineshopping.domain.User;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * @Author: Selune
@@ -26,7 +25,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @Autowired
     private UserRepository userRepository;
@@ -39,12 +38,12 @@ public class UserController {
 
     @PostMapping(value = "/register")
     public ModelAndView register(RegisterForm registerForm) throws Exception {
-        if (service.findByName(registerForm.getName())) {
+        if (userService.findByName(registerForm.getName())) {
             throw new Exception("用户已存在");
         }
         User user = new User();
         BeanUtils.copyProperties(registerForm, user);
-        service.registerUser(user);
+        userService.registerUser(user);
         return new ModelAndView("redirect:/users/loginForm");
     }
 
@@ -58,7 +57,7 @@ public class UserController {
     public ModelAndView login(LoginForm loginForm,
                               Model model,
                               HttpServletRequest request) throws Exception {
-        User result = service.findByNameAndPassword(loginForm.getName(), loginForm.getPassword());
+        User result = userService.findByNameAndPassword(loginForm.getName(), loginForm.getPassword());
 
         if (null == result) {
             throw new Exception("用户不存在");
@@ -94,21 +93,42 @@ public class UserController {
 
     @GetMapping("/listUser")
     public ModelAndView listUser(Model model) {
-        model.addAttribute("userList", userRepository.findAll());
+        model.addAttribute("userList", userRepository.findAllByRole(0));
         return new ModelAndView("index/admin/userList", "users", model);
     }
 
-    @GetMapping(value = "delete/{id}")
+    @GetMapping("delete/{id}")
     public ModelAndView delete(@PathVariable("id") Integer id, Model model) {
         userRepository.deleteById(id);
-
-        model.addAttribute("userList", userRepository.findAll());
-        model.addAttribute("title", "删除用户");
-        return new ModelAndView("redirect: users/listUser");
+        model.addAttribute("userList", userRepository.findAllByRole(0));
+        return new ModelAndView("index/admin/userList", "users", model);
     }
 
     @GetMapping("/modify/{id}")
-    public ModelAndView modify(@PathVariable("id") Integer id, Model model) {
+    public ModelAndView modifyForm(@PathVariable("id") Integer id, Model model) {
+        User user = userRepository.getOne(id);
 
+        model.addAttribute("user", user);
+        model.addAttribute("id", id);
+        model.addAttribute("title", "修改用户");
+        return new ModelAndView("index/admin/modifyUser", "modify", model);
     }
+
+    @PostMapping("/modifyUser")
+    public ModelAndView modify(UserDTO userDTO) throws Exception {
+        userService.updateUser(userDTO);
+        return new ModelAndView("redirect:loginForm");
+    }
+
+    @GetMapping("/modifyMy")
+    public ModelAndView modifyMy(Model model) throws Exception {
+        model.addAttribute("user", new UserDTO());
+        return new ModelAndView("index/member/modifyUser", "modify", model);
+    }
+
+//    @PostMapping("/modifyMy")
+//    public ModelAndView modifyMy(UserDTO userDTO) throws Exception {
+//        userService.updateUser(userDTO);
+//        return new ModelAndView("re")
+//    }
 }

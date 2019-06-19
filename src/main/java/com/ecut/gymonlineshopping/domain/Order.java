@@ -47,7 +47,7 @@ public class Order {
 
     private String gameLocation;
 
-    private Date game_Time;
+    private Date gameTime;
 
     public void setOrderAmount() {
         this.orderAmount = this.ticketMoney.multiply(new BigDecimal(this.ticketQuantity));

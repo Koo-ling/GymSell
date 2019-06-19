@@ -22,6 +22,7 @@ public class GameInfoServiceImpl implements GameInfoService {
 
     @Override
     public void saveGame(GameInfo gameInfo) throws Exception {
+        gameInfo.setGameResult("比赛未开始");
         repository.save(gameInfo);
     }
 

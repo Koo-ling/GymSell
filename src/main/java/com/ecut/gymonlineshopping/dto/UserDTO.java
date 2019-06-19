@@ -18,8 +18,6 @@ public class UserDTO {
 
     private String address;
 
-    private String sex;
-
     private String phone;
 
     private String email;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户</title>
+    <link href="../../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+    <style>
+        input {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="width: auto; margin: 60px 330px 0; font-size: 20px" >
+    <h3 th:text="${modify.title}"></h3>
+    <form action="/users/modifyUser" method="post" th:object="${modify.user}">
+        <input type="hidden" name="id" th:value="${modify.id}"><br>
+        用户名: <b th:text="*{name}"></b><br><br>
+        密码: <label>
+        <input type="password" name="password" th:value="*{password}">
+    </label><br><br>
+        地址: <label>
+        <input type="text" name="address" th:value="*{address}">
+    </label><br><br>
+        电话: <label>
+        <input type="text" name="phone" th:value="*{phone}">
+    </label><br><br>
+        邮箱: <label>
+        <input type="email" name="email" th:value="*{email}">
+    </label><br><br>
+        <input type="submit" value="更新" style="width: 220px">
+    </form>
+</div>
+</body>
+</html>

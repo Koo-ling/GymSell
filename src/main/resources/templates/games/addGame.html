@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加比赛</title>
+    <link href="../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+    <style>
+        input {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="width: auto; margin: 60px 330px 0; font-size: 20px" >
+    <form action="/games/addGamePost" method="post" th:object="${gameInfo.game}">
+        比赛场次: <label>
+        <input type="text" name="gameId" th:value="*{gameId}">
+    </label><br><br>
+        比赛名称: <label>
+        <input type="text" name="gameName" th:value="*{gameName}">
+    </label><br><br>
+        比赛类型: <label>
+        <input type="text" name="gameType" th:value="*{gameType}">
+    </label><br><br>
+        比赛组织: <label>
+        <input type="text" name="gameOrganizer" th:value="*{gameOrganizer}">
+    </label><br><br>
+        比赛队伍: <label>
+        <input type="text" name="gameMember" th:value="*{gameMember}">
+    </label><br><br>
+        比赛时间: <label>
+        <input type="text" name="gameTime" th:value="*{gameTime}">
+    </label><br><br>
+        比赛场地: <label>
+        <input type="text" name="gameLocation" th:value="*{gameLocation}">
+    </label><br><br>
+        <input type="submit" value="添加比赛">
+
+    </form>
+</div>
+</body>
+</html>

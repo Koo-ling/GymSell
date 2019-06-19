@@ -11,6 +11,46 @@
 <body>
 <!-- 页面顶部-->
 <div th:replace="~{/fragment/header :: header}"></div>
-
+<div style="width: auto; margin: 60px 10px 0">
+    <table border="1" style="width: 1500px; align-self: center; font-size: medium">
+        <thead>
+        <tr style="font-size: larger">
+            <td>订单号</td>
+            <td>姓名</td>
+            <td>地址</td>
+            <td>手机号</td>
+            <td>邮箱</td>
+            <td>订单金额</td>
+            <td>门票数量</td>
+            <td>门票单价</td>
+            <td>下单时间</td>
+            <td>比赛场次</td>
+            <td>比赛地址</td>
+            <td>比赛名称</td>
+            <td>比赛时间</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${order.orderList.size()} eq 0">
+            <td colspan="3">没有用户信息！！</td>
+        </tr>
+        <tr th:each="order : ${order.orderList}">
+            <td th:text="${order.orderId}">1</td>
+            <td th:text="${order.name}">11</td>
+            <td th:text="${order.address}">11</td>
+            <td th:text="${order.phone}">11</td>
+            <td th:text="${order.email}">11</td>
+            <td th:text="${order.orderAmount}">11</td>
+            <td th:text="${order.ticketQuantity}">11</td>
+            <td th:text="${order.ticketMoney}">11</td>
+            <td th:text="${order.createTime}">11</td>
+            <td th:text="${order.gameId}">11</td>
+            <td th:text="${order.gameLocation}">11</td>
+            <td th:text="${order.gameName}">11</td>
+            <td th:text="${order.gameTime}">11</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有用户</title>
+    <link href="../../../static/css/header.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../static/css/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../static/css/footer.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="width: auto; margin: 60px 330px 0">
+    <table border="1" style="width: 800px; align-self: center; font-size: medium">
+        <thead>
+        <tr style="font-size: larger">
+            <td>姓名</td>
+            <td>性别</td>
+            <td>地址</td>
+            <td>电话</td>
+            <td>邮箱</td>
+            <td>修改</td>
+            <td>删除</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${users.userList.size()} eq 0">
+            <td colspan="3">没有用户信息！！</td>
+        </tr>
+        <tr th:each="user : ${users.userList}">
+            <td th:text="${user.name}">1</td>
+            <td th:text="${user.sex}">11</td>
+            <td th:text="${user.address}">11</td>
+            <td th:text="${user.phone}">11</td>
+            <td th:text="${user.email}">11</td>
+            <td><a th:href="@{'/users/modify/' + ${user.id}}" th:text="'修改'"></a></td>
+            <td><a th:href="@{'/users/delete/' + ${user.id}}" th:text="'删除'"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

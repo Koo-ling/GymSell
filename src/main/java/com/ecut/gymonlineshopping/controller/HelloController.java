@@ -24,6 +24,6 @@ public class HelloController {
     @GetMapping("/")
     public ModelAndView index(Model model) {
         model.addAttribute("title", "体育馆比赛售票系统");
-        return new ModelAndView("index", "index", model);
+        return new ModelAndView("redirect:/users/loginForm", "index", model);
     }
 }

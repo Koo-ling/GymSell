@@ -42,7 +42,7 @@ public class OrderController {
             orderList = orderService.findByName(name);
         }
         model.addAttribute("orderList", orderList);
-        return new ModelAndView("order/listOrder", "adminOrder", model);
+        return new ModelAndView("order/listOrder", "order", model);
     }
 
     @GetMapping("/buy/{gameId}")

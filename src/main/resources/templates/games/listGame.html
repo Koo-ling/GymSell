@@ -11,7 +11,7 @@
 <!-- 页面顶部-->
 <div th:replace="~{/fragment/header :: header}"></div>
 <div style="font-size: medium; width: 800px; margin: 60px auto 0">
-    <table th:border="1">
+    <table th:border="1" style="width: 800px; align-self: center; font-size: medium">
         <thead>
         <tr>
             <td>比赛场次</td>
@@ -20,6 +20,7 @@
             <td>比赛场地</td>
             <td>比赛类型</td>
             <td>比赛结果</td>
+            <td>更新结果</td>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
             <td th:text="${gameInfo.gameLocation}"></td>
             <td th:text="${gameInfo.gameType}"></td>
             <td th:text="${gameInfo.gameResult}"></td>
+            <td><a th:href="@{'/games/modify/' + ${gameInfo.id}}" th:text="修改结果"></a> </td>
         </tr>
         </tbody>
     </table>

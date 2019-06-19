@@ -3,6 +3,8 @@ package com.ecut.gymonlineshopping.repository;
 import com.ecut.gymonlineshopping.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @Author: Selune
  * @Date: 2019/6/12 15:18
@@ -26,4 +28,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findByName(String name);
 
     void deleteById(Integer id);
+
+    List<User> findAllByRole(Integer role);
 }
