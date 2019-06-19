@@ -39,9 +39,14 @@ public interface GameTicketService {
      */
     List<GameTicket> findAll();
 
+    void save(GameTicket gameTicket) throws Exception;
 
-    /** 增加库存 */
-    void increaseStock(List<CartDTO> cartDTOList);
+    /**
+     * 根据gameId获取比赛
+     * @param gameId
+     * @return
+     */
+    GameTicket findByGameId(Integer gameId);
 
     /** 减少库存 */
     void decreaseStock(List<CartDTO> cartDTOList);

@@ -3,6 +3,8 @@ package com.ecut.gymonlineshopping.service;
 import com.ecut.gymonlineshopping.dto.UserDTO;
 import com.ecut.gymonlineshopping.domain.User;
 
+import java.util.List;
+
 /**
  * @Author: Selune
  * @Date: 2019/6/12 15:20

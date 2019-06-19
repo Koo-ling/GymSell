@@ -33,6 +33,8 @@
             <td>比赛时间</td>
             <td>比赛场地</td>
             <td>比赛类型</td>
+            <td>票价</td>
+            <td>剩余票数</td>
             <td>购买</td>
         </tr>
         </thead>
@@ -46,7 +48,9 @@
             <td th:text="${ticket.createTime} + ' - ' + ${ticket.closeTime}"></td>
             <td th:text="${ticket.location}"></td>
             <td th:text="${ticket.type}"></td>
-            <td><a th:href="@{/tickets/buy/} + ${ticket.gameId}"
+            <td th:text="${ticket.ticketMoney}"></td>
+            <td th:text="${ticket.ticketQuantity}"></td>
+            <td><a th:href="@{'/order/buy/' + '${ticket.gameId}'}"
                    th:text="${ticketList.buy}"></a></td>
         </tr>
         </tbody>

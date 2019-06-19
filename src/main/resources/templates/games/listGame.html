@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>比赛赛程</title>
+    <link th:href="@{~/static/css/header.css}" href="../../static/css/header.css" rel="stylesheet"/>
+    <link th:href="@{~/static/css/footer.css}" href="../../static/css/footer.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<div style="font-size: medium; width: 800px; margin: 60px auto 0">
+    <table th:border="1">
+        <thead>
+        <tr>
+            <td>比赛场次</td>
+            <td>比赛名称</td>
+            <td>比赛时间</td>
+            <td>比赛场地</td>
+            <td>比赛类型</td>
+            <td>比赛结果</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${listGame.games.size()} eq 0">
+            <td>今天没有比赛</td>
+        </tr>
+        <tr th:each="gameInfo : ${listGame.games}">
+            <td th:text="${gameInfo.gameId}"></td>
+            <td th:text="${gameInfo.gameName}"></td>
+            <td th:text="${gameInfo.gameTime}"></td>
+            <td th:text="${gameInfo.gameLocation}"></td>
+            <td th:text="${gameInfo.gameType}"></td>
+            <td th:text="${gameInfo.gameResult}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -64,18 +64,13 @@ public class GameTicketServiceImpl implements GameTicketService {
     }
 
     @Override
-    @Transactional
-    public void increaseStock(List<CartDTO> cartDTOList) {
-        for (CartDTO cardDTO : cartDTOList) {
-            GameTicket gameTicket = gameTicketRepository.findByGameId(cardDTO.getGameId());
-            if (null == gameTicket) {
-                throw new GymException(ExceptionEnum.GAME_NOT_EXIST);
-            }
-            Integer result = gameTicket.getTicketQuantity() + cardDTO.getTicketQuantity();
-            gameTicket.setTicketQuantity(result);
+    public void save(GameTicket gameTicket) throws Exception {
+        gameTicketRepository.save(gameTicket);
+    }
 
-            gameTicketRepository.save(gameTicket);
-        }
+    @Override
+    public GameTicket findByGameId(Integer gameId) {
+        return gameTicketRepository.findByGameId(gameId);
     }
 
     @Override

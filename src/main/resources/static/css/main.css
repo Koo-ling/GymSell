@@ -1,0 +1,100 @@
+@charset "utf-8";
+#container {
+    width: 100%;
+    box-sizing: border-box;
+    /*margin: 0px auto;*/
+    overflow-x: hidden;
+    height: 660px;
+    background-image: url("../img/main.jpg");
+}
+#cover{
+    width: 280px;
+    height: 277px;
+    margin-right: 122px;
+    margin-top: 122px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.3);
+}
+#cover .txt{
+    float: left;
+    overflow: hidden;
+    width: 253px;
+    height: 277px;
+    padding: 10px;
+}
+#cover .txt p,.container .txt p{
+    font-size: 18px;
+}
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    /*margin: 0px auto;*/
+    overflow-x: hidden;
+    /*height: 500px;*/
+    background-image: url("../img/main.jpg");
+}
+.panel {
+    border-radius: 2px;
+    min-height: 80px;
+    padding: 1.2em .6em;
+    width:450px;
+    height:600px;
+    margin-right: 25px;
+    margin-top: 91px;
+    box-sizing: border-box;
+    background-color:rgba(0,0,0,0.2);
+}
+#showResult{
+    width: 258px;
+    height: 30px;
+    position: absolute;
+    top: 330px;
+    right: 135px;
+    display: inline-block;
+    line-height: 30px;
+    font-size: 12px;
+    color: #fff;
+    padding-left: 8px;
+}
+
+.modal{
+    width:400px;
+    height:144px;
+    position: fixed;
+    top:200px;
+    left:500px;
+    z-index: 2000;
+    color:#333;
+    font: 14px simhei;
+    border-radius: 2px;
+    display: none;
+}
+.modal_header{
+    width:390px;
+    height:42px;
+    line-height: 42px;
+    padding-left: 10px;
+    background: -moz-linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%);
+    background: -webkit-linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%);
+    background: -o-linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%);
+    background: -ms-linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%);
+    background: linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%);
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    box-shadow: 0px 10px 10px #ccc;
+    margin-bottom: 1px;
+}
+.modal_content{
+    width:400px;
+    height:100px;
+    line-height: 100px;
+    background: #fff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius:2px;
+    text-align: center;
+}
+.modal_content>img{
+    position: relative;
+    top:17px;
+    margin-right: 5px;
+}

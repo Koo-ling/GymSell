@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>下单</title>
+    <link th:href="@{~/static/css/header.css}" href="../../static/css/header.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/footer.css}" href="../../static/css/footer.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/animate.css}" href="../../static/css/animate.css" rel="stylesheet" />
+    <link th:href="@{~/static/css/main.css}" href="../../static/css/main.css" rel="stylesheet" />
+</head>
+<body>
+<!-- 页面顶部-->
+<div th:replace="~{/fragment/header :: header}"></div>
+<h3>下单</h3>
+<div>
+    <form action="/order/buy/createOrder" method="post" th:object="${createOrder.order}">
+        <input type="hidden" name="orderId" th:value="*{orderId}">
+        姓名: <input type="text" name="name" th:value="*{name}"><br>
+        地址: <input type="text" name="address" th:value="*{address}"><br>
+        手机号: <input type="text" name="phone" th:value="*{phone}" ><br>
+        邮箱: <input type="email" name="email" th:value="*{email}"><br>
+        数量: <input type="text" name="ticketQuantity" th:value="*{ticketQuantity}"><br>
+        单价: <b th:text="${createOrder.ticket.ticketMoney}"></b><br>
+
+        <input type="submit" value="下单">
+    </form>
+</div>
+</body>
+</html>

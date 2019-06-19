@@ -5,14 +5,12 @@ import com.ecut.gymonlineshopping.dto.LoginDTO;
 import com.ecut.gymonlineshopping.form.LoginForm;
 import com.ecut.gymonlineshopping.form.RegisterForm;
 import com.ecut.gymonlineshopping.domain.User;
+import com.ecut.gymonlineshopping.repository.UserRepository;
 import com.ecut.gymonlineshopping.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping(value = "/registerForm")
     public ModelAndView registerForm(Model model) throws Exception {
@@ -89,5 +90,25 @@ public class UserController {
     public ModelAndView loginout(HttpServletRequest request) throws Exception {
         request.getSession().invalidate();
         return new ModelAndView("users/loginForm");
+    }
+
+    @GetMapping("/listUser")
+    public ModelAndView listUser(Model model) {
+        model.addAttribute("userList", userRepository.findAll());
+        return new ModelAndView("index/admin/userList", "users", model);
+    }
+
+    @GetMapping(value = "delete/{id}")
+    public ModelAndView delete(@PathVariable("id") Integer id, Model model) {
+        userRepository.deleteById(id);
+
+        model.addAttribute("userList", userRepository.findAll());
+        model.addAttribute("title", "删除用户");
+        return new ModelAndView("redirect: users/listUser");
+    }
+
+    @GetMapping("/modify/{id}")
+    public ModelAndView modify(@PathVariable("id") Integer id, Model model) {
+
     }
 }

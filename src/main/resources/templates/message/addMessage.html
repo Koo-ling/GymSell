@@ -12,12 +12,10 @@
 </head>
 <body>
 <div th:replace="~{/fragment/header :: header}">
-    <span sec:authentication="name"></span>
-    <span sec:authentication="principal.authorities"></span>
 </div>
 <div>
     <form action="/message/addMessage" method="post" th:object="${messageForm.message}">
-        <input type="hidden" name="author" th:value="${session.name hu }">
+        <input type="hidden" name="author" th:value="${session.name}">
         <label>
             标题: <input type="text" name="title" th:value="*{title}">
         </label><br>

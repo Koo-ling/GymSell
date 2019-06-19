@@ -1,6 +1,7 @@
 package com.ecut.gymonlineshopping.service;
 
 import com.ecut.gymonlineshopping.domain.Order;
+import com.ecut.gymonlineshopping.dto.OrderDTO;
 
 import java.util.List;
 
@@ -31,4 +32,12 @@ public interface OrderService {
      * @throws Exception
      */
     List<Order> findByOrderId(String orderId) throws Exception;
+
+    /**
+     * 创建订单
+     * @param orderDTO
+     * @return
+     * @throws Exception
+     */
+    OrderDTO createOrder(OrderDTO orderDTO) throws Exception;
 }
